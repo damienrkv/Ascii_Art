@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ascii_art_db";
+$servername = "database-5016057859.webspace-host.com";
+$username = "dbu1018836";
+$password = "C4r$10K1ng!";
+$dbname = "dbs13081185";
 
 // Verbindung zur Datenbank herstellen
 $conn = new mysqli($servername, $username, $password, $dbname);

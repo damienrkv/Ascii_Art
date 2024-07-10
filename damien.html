@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Art Converter</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function fetchRandomArt() {
+                fetch('random_art.php')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Netzwerkantwort war nicht ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log(data); // Logge die Antwort, um sicherzustellen, dass sie korrekt ist
+                        var asciiArtDisplay = document.getElementById('ascii-art-display');
+                        if (asciiArtDisplay && data.ascii_art) {
+                            asciiArtDisplay.innerHTML = '<pre>' + data.ascii_art + '</pre>'; // Verwende ein <pre>-Tag für die Formatierung
+                        }
+                    })
+                    .catch(error => console.error('Fehler beim Abrufen der zufälligen Kunst:', error));
+            }
+    
+            // Initial fetch
+            fetchRandomArt();
+    
+            // Fetch new art every 5 seconds
+            setInterval(fetchRandomArt, 5000);
+        });
+    </script>
+    
+</head>
+<h2 class="h2">ASCII Art Converter</h2>
+<body class="body">
+
+    <div class="wrapper">
+        <div class="side left">
+            <form action="convert.php" method="post" enctype="multipart/form-data">
+                <label for="image">Bild auswählen:</label>
+                <input type="file" id="image" name="image" accept="image/*"><br>
+                <label for="max_chars">Maximale Zeichenanzahl:</label>
+                <input type="number" id="max_chars" name="max_chars" value="1000"><br>
+                <label for="inverted">Invertieren?</label>
+                <input type="checkbox" id="inverted" name="inverted"><br>
+                <button type="submit">Konvertieren</button>
+            </form>
+        </div>
+
+            <div class="side right">
+            <h2>Bisherige Uploads</h2>
+            <div id="uploads">
+                <?php include 'show_uploads.php'; ?>
+            </div>
+
+            <!--<h2>Zufällige ASCII Kunst</h2>-->
+
+            <div id="ascii-art-display"></div> <!-- Stelle sicher, dass dieses Element existiert -->
+        </div>
+    </div>
+</body>
+<footer>
+    <div>created by Damien Rajkovic</div>
+    <div>with the help of ChatGPT-4o</div>
+</footer>
+</html>
