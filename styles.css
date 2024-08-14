@@ -1,29 +1,190 @@
-
-
-.body {
-    
+html, body {
+    margin: 0;
+    padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: auto;
-    display: flexbox;
-    border: 5cap;
-    padding: 5%;
-    
+    height: 100%;
+    background-color: #fff;
+    color: #000;
 }
 
-.h2 {
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.main {
+    flex: 1 1 300px; /* Flexibilität: Startbreite 300px */
+    box-sizing: border-box;
+}
+
+@media (max-width: 800px) {
+    .wrapper {
+        flex-direction: column !important; /* Elemente untereinander anordnen */
+    }
+
+    .main {
+        width: 100% !important; /* Sicherstellen, dass jedes .main 100% der Breite hat */
+    }
+}
+
+
+h1 {
     text-align: center;
-    margin: auto;
+    /*margin: auto;
     width: 50%;
-    color: blue;
+    color: blue;*/
 }
 
-.label {
-    font-size: 1.5em;
-    color:aquamarine;
+.cool-title {
+    /*font-family: 'Arial Black', Gadget, sans-serif; /* Fett und modern */
+    font-size: 3em; /* Große Schriftgröße */
+    color: blue; /* Auffällige Farbe (Blau) */
+    text-align: center; /* Zentriert die Überschrift */
+    /*text-transform: uppercase; /* Großbuchstaben */
+    /*letter-spacing: 5px; /* Abstand zwischen den Buchstaben */
+    margin-bottom: 20px; /* Abstand zu den darunterliegenden Bereichen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.248); /* Leichter Schlagschatten */
 }
+
+h2 {
+    text-align: left;
+    margin: 0;
+    width: 50%;
+    color: rgb(43, 43, 43);
+}
+
+#ascii-art-container {
+    width: 100%;
+    height: 100vh; /* Sicherstellen, dass der Container die volle Höhe einnimmt */
+    overflow: hidden; /* Verhindert das Überlaufen des Containers */
+    text-align: center; /* Optional, zentriert das ASCII-Art */
+}
+
+#ascii-art {
+    display: inline-block;
+    font-family: monospace;
+    font-size: 4vw; /* Schriftgröße relativ zur Viewport-Breite */
+    white-space: pre-wrap; /* Zeilenumbrüche in ASCII-Art */
+    word-wrap: break-word; /* Langes ASCII-Art wird umgebrochen */
+}
+
+.custom {
+    display: inline-block; /* Macht den Link wie einen Button */
+    padding: 10px 20px; /* Etwas Polsterung für den Button */
+    margin-top: 100px; /* Abstand zum oberen Inhalt */
+    background-color: #007bff; /* Hintergrundfarbe */
+    color: white; /* Textfarbe */
+    text-align: center; /* Text zentrieren */
+    text-decoration: none; /* Entfernt die Unterstreichung */
+    border-radius: 5px; /* Abgerundete Ecken */
+    border: 1px solid transparent; /* Kein sichtbarer Rand */
+}
+
+.con {
+    display: inline-block; /* Macht den Link wie einen Button */
+    padding: 10px 20px; /* Etwas Polsterung für den Button */
+    margin-top: 10px; /* Abstand zum oberen Inhalt */
+    background-color: #00e868; /* Hintergrundfarbe */
+    color: rgb(0, 0, 0); /* Textfarbe */
+    text-align: center; /* Text zentrieren */
+    text-decoration: none; /* Entfernt die Unterstreichung */
+    border-radius: 5px; /* Abgerundete Ecken */
+    border: 1px solid transparent; /* Kein sichtbarer Rand */
+}
+
+.custom:hover {
+    background-color: #0056b3; /* Dunklere Farbe beim Hover-Effekt */
+    border-color: #0056b3; /* Randfarbe beim Hover-Effekt */
+}
+
 
 footer {
     text-align: center;
-    padding: 10px 0;
-    border-top: 1px solid #ddd;
+    padding: 10px;
+    border-top: 1px solid #ddd;  
+    width: 100%;
+}
+
+
+
+.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode .cool-title {
+    color: #bb86fc;
+}
+
+.dark-mode .return-button {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+.dark-mode button {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+/* Styles für den Dark Mode Toggle Button */
+.dark-mode-toggle {
+    justify-content: right;
+    font-size: 0.75em; /* Kleinere Schriftgröße für den Button */
+    padding: 5px 10px; /* Weniger Polsterung für den Button */
+    margin-left: 20px; /* Abstand zwischen der Überschrift und dem Button */
+    background-color: #007bff; /* Hintergrundfarbe des Buttons */
+    color: white; /* Textfarbe des Buttons */
+    border: none; /* Kein sichtbarer Rand */
+    border-radius: 5px; /* Abgerundete Ecken */
+    cursor: pointer; /* Zeigt den Mauszeiger als Hand an */
+}
+
+
+/* Stil für den Hinweis-Button */
+.info-button {
+    background-color: #007bff; /* Hintergrundfarbe des Buttons */
+    color: white; /* Textfarbe des Buttons */
+    border: none; /* Kein sichtbarer Rand */
+    border-radius: 50%; /* Runde Form für den Button */
+    width: 30px; /* Breite des Buttons */
+    height: 30px; /* Höhe des Buttons */
+    font-size: 1.2em; /* Schriftgröße */
+    text-align: center; /* Text zentrieren */
+    line-height: 30px; /* Text vertikal zentrieren */
+    cursor: pointer; /* Zeigt den Mauszeiger als Hand an */
+    margin-left: 10px; /* Abstand zum Konvertieren-Button */
+}
+
+/* Stil für das Popup */
+.info-popup {
+    display: none; /* Anfangs versteckt */
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Über andere Elemente legen */
+}
+
+/* Zeige das Popup bei Hover oder Klick */
+.info-button:hover + .info-popup,
+.info-button:focus + .info-popup {
+    display: block;
+}
+
+.logo {
+    height: 50px; /* Höhe des Logos */
+}
+
+.banner{
+display: flex; /* Flexbox für Layout */
+    justify-content: space-between; /* Elemente an den Enden platzieren */
+    align-items: center; /* Vertikale Zentrierung */
+    padding: 10px 20px; /* Innenabstand des Headers */
+    background-color: #333; /* Hintergrundfarbe des Headers */
+    color: white; /* Textfarbe für den Header */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Schatten für das Banner */
 }

@@ -1,11 +1,14 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ascii_art_db";
+$servername = "database-5016057859.webspace-host.com";
+$username = "dbu1018836";
+$password = "C4r$10K1ng!";
+$dbname = "dbs13081185";
 
-function generate_ascii_art($image_path, $max_chars) {
+function generate_ascii_art($image_path, $max_chars, $inverted) {
     $ascii_chars = '@%#*+=-:. ';
+    if ($inverted) {
+        $ascii_chars = strrev($ascii_chars);
+    }
     $num_chars = strlen($ascii_chars);
 
     $image = imagecreatefromstring(file_get_contents($image_path));
@@ -24,7 +27,7 @@ function generate_ascii_art($image_path, $max_chars) {
         for ($x = 0; $x < $new_width; $x++) {
             $gray = 255 - ((imagecolorat($resized_image, $x, $y) >> 16) & 0xFF);
             $ascii_char = $ascii_chars[intval($gray / 256 * $num_chars)];
-            $ascii_art .= $ascii_char;
+            $ascii_art .= $ascii_char;    
         }
         $ascii_art .= "<br>";
     }
@@ -37,8 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['image']['tmp_name']) && !empty($_FILES['image']['tmp_name']) && isset($_POST['max_chars'])) {
         $image_path = $_FILES['image']['tmp_name'];
         $max_chars = intval($_POST['max_chars']);
+        $inverted = isset($_POST['inverted']) ? true : false;
 
-        $ascii_art = generate_ascii_art($image_path, $max_chars);
+        $ascii_art = generate_ascii_art($image_path, $max_chars, $inverted);
 
         $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -89,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <!-- In der Ergebnisseite (convert.php) -->
         <br><br>
-        <a href="index.html">ZurÃ¼ck zur Konvertierungsseite</a>
+        <a href="damien.html">Zurück zur Konvertierungsseite</a>
 
         <h2>Bisherige Uploads</h2>
         <div id="uploads">
