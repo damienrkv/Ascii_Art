@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ASCII Art Converter</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<body class="body">
+
+<h2 class="h2">ASCII Art Converter</h2>
+
+
+<form action="/api/convert" method="post" enctype="multipart/form-data">
+
+    <label for="image">
+        Bild auswählen:
+    </label>
+
+    <input 
+        type="file" 
+        id="image" 
+        name="image"
+        accept="image/*"
+    >
+
+
+    <label>
+        Maximale Zeichenanzahl:
+    </label>
+
+    <input 
+        type="number" 
+        name="max_chars" 
+        value="1000"
+    >
+
+
+    <button type="submit">
+        Konvertieren
+    </button>
+
+</form>
+
+
+
+<h2>Bisherige Uploads</h2>
+
+
+<div id="uploads">
+
+</div>
+
+
+<script>
+
+fetch("/api/uploads")
+.then(response => response.text())
+.then(data => {
+
+    document.getElementById("uploads").innerHTML = data;
+
+});
+
+
+</script>
+
+
+
+<footer>
+    created by Damien Rajkovic
+</footer>
+
+
+</body>
+
+</html><!-- 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Art Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="body">
+
+    <h2 class="h2">ASCII Art Converter</h2>
+    <form action="convert.php" method="post" enctype="multipart/form-data">
+        <label for="image">Bild auswählen:</label>
+        <input type="file" id="image" name="image" accept="image/*"><br>
+        <label for="max_chars">Maximale Zeichenanzahl:</label>
+        <input type="number" id="max_chars" name="max_chars" value="1000"><br>
+        <button type="submit">Konvertieren</button>
+    </form>
+
+
+    <h2>Bisherige Uploads</h2>
+    <div id="uploads">
+        <?php include 'show_uploads.php'; ?>
+    </div>
+    <footer>
+        <div>created by Damien Rajkovic</div>
+        <div>with the help of ChatGPT-4o</div>
+    </footer>
+</body>
+
+</html> -->

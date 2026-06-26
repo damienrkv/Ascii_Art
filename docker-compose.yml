@@ -1,0 +1,34 @@
+services:
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+
+    ports:
+      - "8080:80"
+
+    volumes:
+      - ./src:/var/www/html
+
+    depends_on:
+      - db
+
+
+  db:
+    image: mariadb:11
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ascii_art
+      MYSQL_USER: ascii
+      MYSQL_PASSWORD: geheim
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+
+volumes:
+
+  mysql_data:
