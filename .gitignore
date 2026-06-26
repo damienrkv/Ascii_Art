@@ -1,0 +1,15 @@
+# Uploads
+storage/uploads/*
+
+# Datenbank
+database/backups/*
+
+# Environment
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
