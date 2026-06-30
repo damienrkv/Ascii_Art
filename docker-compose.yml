@@ -19,11 +19,10 @@ services:
     image: mariadb:11
 
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: ascii_art
-      MYSQL_USER: ascii
-      MYSQL_PASSWORD: geheim
-
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - mysql_data:/var/lib/mysql
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
