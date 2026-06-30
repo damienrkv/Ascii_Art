@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Art Converter</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="random.js" defer></script>
+    <script src="darkmode.js" defer></script>
+    <script src="caution.js" defer></script>
+</head>
+
+<header class="banner">
+    <div class="logo-container">
+        <a href="../index.html">
+            <img src="pics/logo-white.svg" alt="logo" class="logo">
+        </a>
+    </div>
+</header>
+
+<h1 class="cool-title"">ASCII Art Converter</h1>
+<button id="dark-mode-toggle" class="dark-mode-toggle">Dark Mode</button>
+
+<body class="body">
+    <div class="wrapper">
+        <div class="main">
+            <form action="convert.php" method="post" enctype="multipart/form-data">
+                <label for="image">Bild auswählen:</label>
+                <input type="file" id="image" name="image" accept="image/*"><br>
+                <label for="max_chars">Maximale Zeichenanzahl:</label>
+                <input type="number" id="max_chars" name="max_chars" value="1000"><br>
+                <label for="inverted">Invertieren?</label>
+                <input type="checkbox" id="inverted" name="inverted"><br>
+                <button class="con" type="submit">Konvertieren</button>
+                <!-- Hinweis-Button hinzufügen -->
+                <button type="button" id="info-button" class="info-button">!</button>
+            </form>
+            <!-- Button zum Zurückkehren zur Hauptseite -->
+            <a href="../index.html" class="custom">Return to Main Page</a>
+        </div>
+
+        <div class="main">
+            <h2>Bisherige Uploads</h2>
+            <div id="uploads">
+                <!-- PHP Include -->
+                <?php include 'show_uploads.php'; ?>
+            </div>
+            <div id="ascii-art-display"></div>
+        </div>
+    </div>
+    <script src="resize-ascii-art.js"></script>
+</body>
+
+<footer>
+    <div>created by Damien Rajkovic</div>
+    <div>with the help of ChatGPT-4o</div>
+</footer>
+</html>
