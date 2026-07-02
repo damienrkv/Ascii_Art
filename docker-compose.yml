@@ -10,6 +10,7 @@ services:
 
     volumes:
       - ./src:/var/www/html
+      - uploads_data:/var/www/html/uploads
 
     depends_on:
       - db
@@ -23,11 +24,12 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
     volumes:
       - mysql_data:/var/lib/mysql
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
 
 
 volumes:
-
   mysql_data:
+  uploads_data:
