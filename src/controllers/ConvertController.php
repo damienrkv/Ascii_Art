@@ -53,7 +53,7 @@ function convertArt($db)
 
             move_uploaded_file($_FILES["image"]["tmp_name"], $target);
 
-            $imagePath = "uploads/" . $filename;
+            $imagePath = "/uploads/" . $filename;
             $num_chars = strlen(strip_tags($ascii_art));
 
             // Prepared Statement

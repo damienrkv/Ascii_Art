@@ -11,68 +11,59 @@
 
 <body class="body">
 
-<h2 class="h2">ASCII Art Converter</h2>
+    <h2 class="h2">ASCII Art Converter</h2>
 
 
-<form action="/api/convert" method="post" enctype="multipart/form-data">
+    <form action="/api/convert" method="post" enctype="multipart/form-data">
 
-    <label for="image">
-        Bild auswählen:
-    </label>
+        <label for="image">
+            Bild auswählen:
+        </label>
 
-    <input 
-        type="file" 
-        id="image" 
-        name="image"
-        accept="image/*"
-    >
+        <input type="file" id="image" name="image" accept="image/*">
 
 
-    <label>
-        Maximale Zeichenanzahl:
-    </label>
+        <label>
+            Maximale Zeichenanzahl:
+        </label>
 
-    <input 
-        type="number" 
-        name="max_chars" 
-        value="1000"
-    >
+        <input type="number" name="max_chars" value="1000">
 
 
-    <button type="submit">
-        Konvertieren
-    </button>
+        <button type="submit">
+            Konvertieren
+        </button>
 
-</form>
+    </form>
 
 
 
-<h2>Bisherige Uploads</h2>
+    <h2>Bisherige Uploads</h2>
 
 
-<div id="uploads">
+    <div id="uploads">
 
-</div>
-
-
-<script>
-
-fetch("/api/uploads")
-.then(response => response.text())
-.then(data => {
-
-    document.getElementById("uploads").innerHTML = data;
-
-});
+    </div>
 
 
-</script>
+    <script>
+
+        fetch("/api/uploads")
+            .then(response => response.text())
+            .then(data => {
+
+                document.getElementById("uploads").innerHTML = data;
+
+            });
+
+
+    </script>
 
 
 
-<footer>
-    created by Damien Rajkovic
-</footer>
+    <footer>
+        created by Damien Rajkovic
+    </footer>
 
 
 </body>
